@@ -18,6 +18,8 @@ components:    # define all the building-blocks for Pipeline
       return_no_answer: true
   - name: TextFileConverter
     type: TextConverter
+  - name: DocxFileConverter
+    type: DocxToTextConverter
   - name: PDFFileConverter
     type: PDFToTextConverter
   - name: Preprocessor
@@ -45,8 +47,10 @@ pipelines:
         inputs: [FileTypeClassifier.output_1]
       - name: PDFFileConverter
         inputs: [FileTypeClassifier.output_2]
+      - name: DocxFileConverter
+        inputs: [FileTypeClassifier.output_4]
       - name: Preprocessor
-        inputs: [PDFFileConverter, TextFileConverter]
+        inputs: [PDFFileConverter, TextFileConverter, DocxFileConverter]
       - name: Retriever
         inputs: [Preprocessor]
       - name: DocumentStore

@@ -94,6 +94,7 @@ def upload_file(
             params={
                 "TextFileConverter": fileconverter_params.dict(), 
                 "PDFFileConverter": fileconverter_params.dict(),
+                "DocxFileConverter": fileconverter_params.dict(),
                 "Preprocessor": preprocessor_params.dict()
             },
     )
